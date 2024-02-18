@@ -164,6 +164,9 @@ def app_root():
             config_existing_email = cfg.account.email
             printer = cfg.printers[app.config["printer_index"]]
             country = cfg.account.country
+            if not printer.ip_addr:
+                flash("Printer IP address is not set yet, please complete the setup...",
+                      "warning")
         else:
             anker_config = "No printers found, please load your login config..."
             config_existing_email = ""
